@@ -4,14 +4,14 @@ import {getBlogById, deleteBlog} from "../blogApi/blogApi";
 import toast from "react-hot-toast";
 import Tags from '../components/Tags';
 import Confirm from "../components/Confirm.tsx";
-import { BlogStore } from "../Store/BlogStore";
+import type { BlogType } from "../Store/BlogStore";
 import "../Style.css";
 
 
 function BlogDetail(){
     const {id} = useParams();
     const navigate = useNavigate();
-    const [blog, setblog] = useState<BlogStore | null>(null);
+    const [blog, setblog] = useState<BlogType | null>(null);
     const [open, setopen] = useState<boolean>(false);
 
     useEffect(()=>{

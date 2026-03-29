@@ -3,12 +3,13 @@ import {useParams, useNavigate} from "react-router-dom";
 import {getBlogById, updateBlog} from "../blogApi/blogApi";
 import toast from "react-hot-toast";
 import "../Style.css";
+import type { BlogType } from "../Store/BlogStore";
 
 
 function EditBlog(){
     const {id} = useParams();
     const navigate = useNavigate();
-    const [blog, setblog] = useState<Blog | null>(null);
+    const [blog, setblog] = useState<BlogType | null>(null);
 
     useEffect(() =>{
         if(id){
@@ -28,12 +29,12 @@ function EditBlog(){
             const response = await getBlogById(id);
             console.log("API RESPONSE:", response);
             console.log("Blogs : ",response);
-            const blog = response;
+            setblog(response);
             setform({
-                title: blog.title,
-                content: blog.content,
-                tags: blog.tags,
-                author : blog.author
+                title: response.title,
+                content: response.content,
+                tags: response.tags,
+                author : response.author
             })
         } catch (error) {
             toast.error("Error fetching blogs");

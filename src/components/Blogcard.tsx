@@ -1,10 +1,10 @@
-import { BlogStore } from '../Store/BlogStore.tsx';
+import type { BlogType } from '../Store/BlogStore.tsx';
 import {Link} from 'react-router-dom';
 import formatDate from '../util/DateConvert.tsx';
 import Tags from './Tags.tsx';
 import "../Style.css";
 
-function Blogcard({blog}: {blog : BlogStore}){
+function Blogcard({blog}: {blog : BlogType}){
     return(
         <>
             <div className="blog-main">
