@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { BlogStore } from "../Store/BlogStore";
+import type { BlogType } from "../Store/BlogStore";
 import { createBlog } from "../blogApi/blogApi";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import "../Style.css";
 
 function CreateBlog(){
-    const [form, setform] = useState<BlogStore>({
+    const [form, setform] = useState<BlogType>({
         title : "",
         content : "",
         author : "",
@@ -29,8 +29,6 @@ function CreateBlog(){
         }
     }
 
-    
-    
     return(
         <>
             <div className="create-main">
