@@ -9,7 +9,6 @@ import type { BlogType } from "../Store/BlogStore";
 function EditBlog(){
     const {id} = useParams();
     const navigate = useNavigate();
-    const [blog, setblog] = useState<BlogType | null>(null);
 
     useEffect(() =>{
         if(id){
@@ -31,7 +30,6 @@ function EditBlog(){
             console.log("API RESPONSE:", response);
             console.log("Blogs : ",response);
             if(!response) return;
-            setblog(response);
             setform({
                 title: response.title,
                 content: response.content,
