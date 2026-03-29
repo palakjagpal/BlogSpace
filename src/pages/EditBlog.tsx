@@ -17,7 +17,7 @@ function EditBlog(){
         }
     }, [id])
 
-    const [form,setform] = useState({
+    const [form,setform] = useState<BlogType>({
         title: "",
         content: "",
         tags: [],
@@ -25,10 +25,12 @@ function EditBlog(){
     }) 
 
     async function fetchBlogs(){
+        if(!id) return
         try{
             const response = await getBlogById(id);
             console.log("API RESPONSE:", response);
             console.log("Blogs : ",response);
+            if(!response) return;
             setblog(response);
             setform({
                 title: response.title,

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Search from "../components/Search";
-import { BlogStore } from "../Store/BlogStore";
+import type { BlogType } from "../Store/BlogStore";
 import { getBlogs } from "../blogApi/blogApi";
 import toast from "react-hot-toast";
 import Blogcard from "../components/Blogcard";
@@ -8,7 +8,7 @@ import "../Style.css";
 
 
 function Home(){
-    const [blogs, setblogs] = useState<BlogStore[]>([]);
+    const [blogs, setblogs] = useState<BlogType[]>([]);
     const [search,setsearch] = useState<string>("");
 
     useEffect(() =>{
@@ -28,14 +28,13 @@ function Home(){
         }
     }
 
-    function filter(blogs: BlogStore[] = [], search: string) {
+    function filter(blogs: BlogType[] = [], search: string) {
     const lowerSearch = search.toLowerCase();
     return blogs.filter(blog => 
         blog.title.toLowerCase().includes(lowerSearch) ||
         blog.content?.toLowerCase().includes(lowerSearch) ||
         blog.author?.toLowerCase().includes(lowerSearch) ||
-        (blog.tags && blog.tags.some(tag => tag.toLowerCase().includes(lowerSearch)))
-    );
+        (blog.tags && blog.tags.some((tag: string) => tag.toLowerCase().includes(lowerSearch))))
     }
 
 
@@ -59,7 +58,7 @@ function Home(){
                 <Search setsearch={setsearch}/>
             <div>
                 {(blogs || []).length > 0 &&
-                    filter(blogs, search).map((blog: BlogStore) => (
+                    filter(blogs, search).map((blog: BlogType) => (
                         <Blogcard key={blog._id} blog={blog} />
                     ))
                 }
