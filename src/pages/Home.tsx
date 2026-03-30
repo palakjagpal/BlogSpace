@@ -11,6 +11,8 @@ function Home(){
     const [blogs, setblogs] = useState<BlogType[]>([]);
     const [search,setsearch] = useState<string>("");
     const [loading, setloading] = useState<boolean>(false);
+    const [page, setpage] = useState<number>(1);
+    const perPage = 6;
 
     useEffect(() =>{
         fetchBlogs();
@@ -43,6 +45,20 @@ function Home(){
         (blog.tags && blog.tags.some((tag: string) => tag.toLowerCase().includes(lowerSearch))))
     }
 
+    const filteredBlogs = filter(blogs, search);
+    const indexofLastBlog = page * perPage;
+    const indexofFirstBlog = indexofLastBlog - perPage;
+    const currentBlogs = filteredBlogs.slice(indexofFirstBlog, indexofLastBlog);
+    const totalPages = Math.ceil(filteredBlogs.length/perPage);
+
+    const Prev = () =>{
+        setpage((prev) => prev-1);
+    }
+
+    const Next = () => {
+        setpage((prev) => prev+1);
+    }
+
 
     return(
         <>
@@ -71,17 +87,36 @@ function Home(){
                     (
                         <div className="allBlogs">
                             <div>
-                                {(blogs || []).length > 0 &&
-                                    filter(blogs, search).map((blog: BlogType) => (
+                                {currentBlogs.length > 0 ? (
+                                    currentBlogs.map((blog: BlogType) => (
                                         <Blogcard key={blog._id} blog={blog} />
                                     ))
+                                ) : (
+                                    <div className="no-blogs">
+                                        <p>No blogs found. Try adjusting your search or create a new blog!</p>
+                                    </div>
+                                )
                                 }
                             </div>
+                            {
+                                filteredBlogs.length>0 && (
+                                    <div className="pagination">
+                                        <button onClick={Prev} disabled={page === 1}>
+                                            Prev
+                                        </button>
+                                        <span>{page} of {totalPages}</span>
+                                        <button onClick={Next} disabled={page === totalPages}>
+                                            Next
+                                        </button>
+                                    </div>
+                                )
+                            }
                         </div>
-                    )
+                    ) 
                 }
         </>
     )
 }
 
 export default Home;
+

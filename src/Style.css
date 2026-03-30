@@ -85,7 +85,6 @@ body {
   color: var(--primary);
 }
 
-
 @media (max-width: 640px) {
   .nav-main {
     flex-direction: column;
@@ -100,12 +99,13 @@ body {
 /* ===== SEARCH ===== */
 .search {
   margin-bottom: 2rem;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .search input {
-  width: 100%;
+  width: 90%;
   max-width: 600px;
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
@@ -122,6 +122,7 @@ body {
   box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
 }
 
+/* ===== HERO SECTION ===== */
 .home-intro {
   text-align: center;
   margin: 2rem 0 3rem;
@@ -149,6 +150,7 @@ body {
   margin: 1rem auto 0;
 }
 
+/* ===== LOADING STATE ===== */
 .loading {
   text-align: center;
   padding: 3rem;
@@ -158,6 +160,7 @@ body {
 /* ===== BLOG CARD ===== */
 .blog-main {
   margin-bottom: 2rem;
+  height: 100%;
 }
 
 .blog-card {
@@ -167,6 +170,9 @@ body {
   box-shadow: var(--shadow-md);
   transition: transform 0.2s, box-shadow 0.2s;
   border-top: 3px solid var(--primary-dark);
+  display: flex;
+  flex-direction: column;
+  height: 90%;
 }
 
 .blog-card:hover {
@@ -196,6 +202,7 @@ body {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  flex-grow: 1;
 }
 
 .blogfootermain {
@@ -230,6 +237,68 @@ body {
 
 .blogread button:hover {
   opacity: 0.9;
+}
+
+/* ===== BLOG GRID (Home) ===== */
+.allBlogs {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Grid for blog cards – target the first div inside .allBlogs */
+.allBlogs > div:first-child {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ===== PAGINATION ===== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 3rem 0 2rem;
+}
+
+.pagination button {
+  background: white;
+  border: 1px solid var(--gray-300);
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  color: var(--gray-700);
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: var(--gray-100);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--gray-600);
+}
+
+/* ===== EMPTY / NO BLOGS STATE ===== */
+.no-blogs {
+  text-align: center;
+  padding: 3rem;
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  color: var(--gray-600);
+  grid-column: 1 / -1; /* take full width in grid */
 }
 
 /* ===== CREATE & EDIT BLOG FORMS ===== */
@@ -280,11 +349,13 @@ body {
   border-radius: var(--radius-sm);
   font-size: 1rem;
   transition: all 0.2s;
+  font-family: "Quicksand";
 }
 
 .input textarea {
   min-height: 200px;
   resize: vertical;
+  font-family: "Quicksand";
 }
 
 .input input:focus,
@@ -292,6 +363,7 @@ body {
   outline: none;
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+  font-family: "Quicksand";
 }
 
 .buttons {
@@ -369,10 +441,10 @@ body {
   font-family: "Quicksand";
 }
 
-
-.content{
-    font-family: "Quicksand";
+.content {
+  font-family: "Quicksand";
 }
+
 .author-read-more {
   display: flex;
   justify-content: space-between;
@@ -427,6 +499,7 @@ body {
   color: var(--gray-700);
 }
 
+/* ===== CONFIRM MODAL ===== */
 .deleteblog {
   position: fixed;
   inset: 0;
@@ -495,26 +568,7 @@ body {
   background: #b91c1c;
 }
 
-.allBlogs {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1rem;
-}
-
-@media (min-width: 768px) {
-  .allBlogs > div:last-child {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 1.5rem;
-  }
-}
-
-.loading {
-  text-align: center;
-  padding: 3rem;
-  color: var(--gray-600);
-}
-
+/* ===== TAG STYLES ===== */
 .blogtags span,
 .tags span {
   display: inline-block;
