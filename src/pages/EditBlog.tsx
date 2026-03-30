@@ -78,7 +78,7 @@ function EditBlog(){
                     </div>
                     <div className="input">
                         <label>Tags</label>
-                        <input type="text" value={form.tags.join(", ")} onChange={(e) => setform({...form, tags : e.target.value.split(", ").map((tag) => tag.trim())})}/>
+                        <input type="text" value={form.tags.join(", ")}  onChange={(e) => setform({...form, tags : e.target.value.split(", ").map((tag) => tag.trim())})}/>
                     </div>
                     <div className="input">
                         <label>Content</label>
