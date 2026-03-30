@@ -161,6 +161,7 @@ body {
 .blog-main {
   margin-bottom: 2rem;
   height: 100%;
+  overflow: hidden;
 }
 
 .blog-card {
