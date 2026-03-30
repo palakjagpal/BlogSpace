@@ -173,7 +173,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 90%;
-  width: 90%;
+  width: 95%;
 }
 
 .blog-card:hover {
