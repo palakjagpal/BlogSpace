@@ -254,6 +254,11 @@ body {
   gap: 1.5rem;
 }
 
+.content{
+  white-space: pre-line;
+  color: black;
+}
+
 /* ===== PAGINATION ===== */
 .pagination {
   display: flex;
@@ -443,7 +448,8 @@ body {
 }
 
 .content {
-  font-family: "Quicksand";
+  font-family: "Montserrat";
+  color: black;
 }
 
 .author-read-more {
