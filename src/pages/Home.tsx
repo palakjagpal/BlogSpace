@@ -10,21 +10,27 @@ import "../Style.css";
 function Home(){
     const [blogs, setblogs] = useState<BlogType[]>([]);
     const [search,setsearch] = useState<string>("");
+    const [loading, setloading] = useState<boolean>(false);
 
     useEffect(() =>{
         fetchBlogs();
     }, [])
 
     async function fetchBlogs(){
+        setloading(true);
+        console.log("Fetching blogs...");
         try{
             const response = await getBlogs();
             console.log("API RESPONSE:", response);
             setblogs(response || []);
             console.log("Blogs : ",response);
+            setloading(false);
         } catch (error) {
             toast.error("Error fetching blogs");
             setblogs([]);
             console.error("Error fetching blogs", error);
+        }finally{
+            setloading(false);
         }
     }
 
@@ -54,16 +60,26 @@ function Home(){
                 </p>
             </div>
 
-            <div className="allBlogs">
+            
                 <Search setsearch={setsearch}/>
-            <div>
-                {(blogs || []).length > 0 &&
-                    filter(blogs, search).map((blog: BlogType) => (
-                        <Blogcard key={blog._id} blog={blog} />
-                    ))
+                {
+                    loading ? (
+                        <div className="loading">
+                            <p>Loading Blogs.....</p>
+                        </div>
+                    ) :
+                    (
+                        <div className="allBlogs">
+                            <div>
+                                {(blogs || []).length > 0 &&
+                                    filter(blogs, search).map((blog: BlogType) => (
+                                        <Blogcard key={blog._id} blog={blog} />
+                                    ))
+                                }
+                            </div>
+                        </div>
+                    )
                 }
-            </div>
-            </div>
         </>
     )
 }
