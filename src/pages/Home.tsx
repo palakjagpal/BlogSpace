@@ -45,10 +45,14 @@ function Home(){
         (blog.tags && blog.tags.some((tag: string) => tag.toLowerCase().includes(lowerSearch))))
     }
 
+    const sortedBlogs = [...blogs].sort((a,b)=>
+        new Date(b.createdAt || "").getTime() - new Date(a.createdAt || "").getTime()
+    );
+
     const filteredBlogs = filter(blogs, search);
     const indexofLastBlog = page * perPage;
     const indexofFirstBlog = indexofLastBlog - perPage;
-    const currentBlogs = filteredBlogs.slice(indexofFirstBlog, indexofLastBlog);
+    const currentBlogs = sortedBlogs.slice(indexofFirstBlog, indexofLastBlog);
     const totalPages = Math.ceil(filteredBlogs.length/perPage);
 
     const Prev = () =>{
