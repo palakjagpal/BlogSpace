@@ -96,23 +96,56 @@ function CreateBlog(){
                 <form onSubmit={handleSubmit}>
                     <div className="input">
                         <label>Title</label>
-                        <input type="text" value={form.title} placeholder="Enter you blog title" onChange={(e) => 
-                            setform({...form, title : e.target.value})}/>
+                        <input
+                            type="text"
+                            value={form.title}
+                            placeholder="Enter you blog title"
+                            onChange={(e) => {
+                                setform({ ...form, title: e.target.value });
+                                seterror((prev) => ({ ...prev, title: undefined }));
+                            }}
+                        />
                         {error.title && <span className="error">{error.title}</span>}
                     </div>
                     <div className="input">
                         <label>Author Name</label>
-                        <input type="text" value={form.author} placeholder="Enter author's name" onChange={(e) => setform({...form, author : e.target.value})}/>
+                        <input
+                            type="text"
+                            value={form.author}
+                            placeholder="Enter author's name"
+                            onChange={(e) => {
+                                setform({ ...form, author: e.target.value });
+                                seterror((prev) => ({ ...prev, author: undefined }));
+                            }}
+                        />
                         {error.author && <span className="error">{error.author}</span>}
                     </div>
                     <div className="input">
                         <label>Tags</label>
-                        <input type="text" value={form.tags.join(", ")} placeholder="tag1, tag2, tag3,....." onChange={(e) => setform({...form, tags : e.target.value.split(", ").map((tag) => tag.trim())})}/>
+                        <input
+                            type="text"
+                            value={form.tags.join(", ")}
+                            placeholder="tag1, tag2, tag3,....."
+                            onChange={(e) => {
+                                setform({
+                                    ...form,
+                                    tags: e.target.value.split(", ").map((tag) => tag.trim()),
+                                });
+                                seterror((prev) => ({ ...prev, tags: undefined }));
+                            }}
+                        />
                         {error.tags && <span className="error">{error.tags}</span>}
                     </div>
                     <div className="input">
                         <label>Content</label>
-                        <textarea value={form.content} placeholder="Enter your blog content here..." onChange={(e) => setform({...form, content : e.target.value})}/>
+                        <textarea
+                            value={form.content}
+                            placeholder="Enter your blog content here..."
+                            onChange={(e) => {
+                                setform({ ...form, content: e.target.value });
+                                seterror((prev) => ({ ...prev, content: undefined }));
+                            }}
+                        />
                         {error.content && <span className="error">{error.content}</span>}
                     </div>
                     <div className="input buttons">
