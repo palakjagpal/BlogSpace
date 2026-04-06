@@ -4,6 +4,7 @@ import {getBlogById, updateBlog} from "../blogApi/blogApi";
 import toast from "react-hot-toast";
 import "../Style.css";
 import type { BlogType } from "../Store/BlogStore";
+import Footer from "../components/Footer.tsx";
 
 
 function EditBlog(){
@@ -95,6 +96,8 @@ function EditBlog(){
                 </form>
                 
             </div>
+
+            <Footer />
         </>
     )
 }

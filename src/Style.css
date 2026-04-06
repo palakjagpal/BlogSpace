@@ -586,3 +586,128 @@ body {
   font-weight: 500;
   color: var(--primary);
 }
+
+/* ===== FOOTER ===== */
+.footer {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid var(--gray-200);
+  margin-top: 4rem;
+  padding: 3rem 2rem 1.5rem;
+  box-shadow: 0 -4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.footer-brand h2 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-family: "Outfit";
+  margin-bottom: 0.5rem;
+}
+
+.footer-brand p {
+  color: var(--gray-600);
+  max-width: 250px;
+  font-size: 0.9rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.footer-section h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gray-800);
+  margin-bottom: 1rem;
+  letter-spacing: 0.5px;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 0.6rem;
+}
+
+.footer-section ul li a {
+  text-decoration: none;
+  color: var(--gray-600);
+  transition: color 0.2s;
+  font-size: 0.9rem;
+}
+
+.footer-section ul li a:hover {
+  color: var(--primary);
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--gray-200);
+  color: var(--gray-500);
+  font-size: 0.8rem;
+}
+
+/* ===== RESPONSIVE FOOTER ===== */
+@media (max-width: 768px) {
+  .footer {
+    padding: 2rem 1rem 1rem;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .footer-brand p {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .footer-links {
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .footer-section h4 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-links {
+    flex-direction: column;
+    gap: 1.2rem;
+    text-align: center;
+  }
+
+  .footer-section ul li {
+    margin-bottom: 0.4rem;
+  }
+
+  .footer-bottom {
+    margin-top: 2rem;
+    font-size: 0.7rem;
+  }
+}

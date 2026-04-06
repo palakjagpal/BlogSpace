@@ -6,6 +6,7 @@ import Tags from '../components/Tags';
 import Confirm from "../components/Confirm.tsx";
 import type { BlogType } from "../Store/BlogStore";
 import "../Style.css";
+import Footer from "../components/Footer.tsx";
 
 
 function BlogDetail(){
@@ -103,6 +104,8 @@ function BlogDetail(){
                     </div>
                 )
             }
+
+            <Footer />
                 
         </>
     )

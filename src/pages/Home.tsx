@@ -5,6 +5,7 @@ import { getBlogs } from "../blogApi/blogApi";
 import toast from "react-hot-toast";
 import Blogcard from "../components/Blogcard";
 import "../Style.css";
+import Footer from "../components/Footer.tsx";
 
 
 function Home(){
@@ -118,6 +119,7 @@ function Home(){
                         </div>
                     ) 
                 }
+                <Footer />
         </>
     )
 }
