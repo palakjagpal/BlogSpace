@@ -19,6 +19,10 @@ function Home(){
         fetchBlogs();
     }, [])
 
+    useEffect(()=>{
+        setpage(1);  
+    },[search])
+
     async function fetchBlogs(){
         setloading(true);
         console.log("Fetching blogs...");
@@ -46,11 +50,13 @@ function Home(){
         (blog.tags && blog.tags.some((tag: string) => tag.toLowerCase().includes(lowerSearch))))
     }
 
-    const sortedBlogs = [...blogs].sort((a,b)=>
-        new Date(b.createdAt || "").getTime() - new Date(a.createdAt || "").getTime()
-    );
 
     const filteredBlogs = filter(blogs, search);
+
+    const sortedBlogs = [...filteredBlogs].sort((a,b)=>
+        new Date(b.createdAt || "").getTime() - new Date(a.createdAt || "").getTime()
+    );
+    
     const indexofLastBlog = page * perPage;
     const indexofFirstBlog = indexofLastBlog - perPage;
     const currentBlogs = sortedBlogs.slice(indexofFirstBlog, indexofLastBlog);
@@ -64,6 +70,7 @@ function Home(){
         setpage((prev) => prev+1);
     }
 
+    
 
     return(
         <>
