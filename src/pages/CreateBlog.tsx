@@ -18,7 +18,7 @@ function CreateBlog(){
         title ?: string;
         content ?: string;
         author ?: string;
-        tags ?: string[];
+        tags ?: string;
     }
 
     const [error, seterror] = useState<value_type>({});
